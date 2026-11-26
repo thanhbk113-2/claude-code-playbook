@@ -1,0 +1,12 @@
+# Database and runtime state for claude-mem
+*.db
+*.db-*
+*.sqlite3
+worker.pid
+logs/
+state/
+work-view/
+chroma/
+
+# Environment / local overrides
+*.local.json

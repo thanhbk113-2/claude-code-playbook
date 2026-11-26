@@ -11,6 +11,11 @@
 claude-code-playbook/
 ├── README.md                     # Tài liệu tổng quan & tra cứu nhanh (bạn đang đọc)
 ├── setup-guide.md                # Hướng dẫn chi tiết dựng môi trường từ số 0
+├── .claude/                      # Cấu hình Claude Code cho repo (kết nối Omniroute & hook)
+│   └── settings.json             # Endpoint Omniroute localhost:20128, model antigravity-combo
+├── .claude-mem/                  # Cấu hình bộ nhớ claude-mem qua Omniroute Gateway
+│   ├── .env                      # ANTHROPIC_BASE_URL & AUTH_TOKEN omniroute
+│   └── settings.json             # Cấu hình method gateway cho worker
 ├── cheatsheets/                  # Tóm tắt hướng dẫn & mẹo thực chiến từng bộ công cụ
 │   ├── superpowers.md            # Quy trình SE chuẩn: brainstorming, debugging, TDD, planning
 │   ├── ponytail.md               # Triết lý senior dev lười, tối giản code, audit, debt
@@ -33,21 +38,39 @@ claude-code-playbook/
 
 ## 🚀 Bảng Tra Cứu Nhanh Lệnh Thường Dùng (Quick Cheatsheet)
 
-| Nhu cầu / Tình huống | Lệnh gọi | Bộ công cụ |
-|----------------------|----------|------------|
-| Muốn bắt đầu tính năng mới, phân tích hướng đi | `/brainstorming` | Superpowers |
-| Gặp bug, app crash, logic sai cần điều tra gốc rễ | `/systematic-debugging` | Superpowers |
-| Viết tính năng có test chặt chẽ (Test-Driven) | `/test-driven-development` | Superpowers |
-| Lập kế hoạch chi tiết từng bước cho task lớn | `/writing-plans` | Superpowers |
-| Thực thi kế hoạch tuần tự từng bước | `/executing-plans` | Superpowers |
-| Muốn code tối giản nhất, tránh code thừa | `/ponytail full` | Ponytail |
-| Rà soát code thừa, over-engineering | `/ponytail-review` | Ponytail |
-| Bật chế độ tiết kiệm token, trả lời ngắn gọn | `/caveman` | Caveman |
-| Tắt chế độ caveman / ponytail | `normal mode` hoặc `stop caveman` | Core |
-| Tìm kiếm trong bộ nhớ lịch sử các phiên trước | `/mem-search` | Claude-Mem |
-| Xuất timeline công việc theo ngày | `/timeline-report` | Claude-Mem |
-| Vẽ biểu đồ tri thức toàn bộ quan hệ code | `/graphify` | Graphify |
-| Review chất lượng code trước khi commit | `/code-review` | Code Review |
+| Nhu cầu / Tình huống                              | Lệnh gọi                          | Bộ công cụ  |
+| ------------------------------------------------- | --------------------------------- | ----------- |
+| Muốn bắt đầu tính năng mới, phân tích hướng đi    | `/brainstorming`                  | Superpowers |
+| Gặp bug, app crash, logic sai cần điều tra gốc rễ | `/systematic-debugging`           | Superpowers |
+| Viết tính năng có test chặt chẽ (Test-Driven)     | `/test-driven-development`        | Superpowers |
+| Lập kế hoạch chi tiết từng bước cho task lớn      | `/writing-plans`                  | Superpowers |
+| Thực thi kế hoạch tuần tự từng bước               | `/executing-plans`                | Superpowers |
+| Muốn code tối giản nhất, tránh code thừa          | `/ponytail full`                  | Ponytail    |
+| Rà soát code thừa, over-engineering               | `/ponytail-review`                | Ponytail    |
+| Bật chế độ tiết kiệm token, trả lời ngắn gọn      | `/caveman`                        | Caveman     |
+| Tắt chế độ caveman / ponytail                     | `normal mode` hoặc `stop caveman` | Core        |
+| Tìm kiếm trong bộ nhớ lịch sử các phiên trước     | `/mem-search`                     | Claude-Mem  |
+| Xuất timeline công việc theo ngày                 | `/timeline-report`                | Claude-Mem  |
+| Vẽ biểu đồ tri thức toàn bộ quan hệ code          | `/graphify`                       | Graphify    |
+| Review chất lượng code trước khi commit           | `/code-review`                    | Code Review |
+
+---
+
+## 🌐 Thiết Lập Cấu Hình Omniroute Gateway (`.claude` & `.claude-mem`)
+
+Repo đã cấu hình sẵn 2 thư mục mẫu để kết nối qua Omniroute local gateway:
+
+1. **`.claude/settings.json`**:
+   - `ANTHROPIC_BASE_URL`: `http://localhost:20128`
+   - `ANTHROPIC_AUTH_TOKEN`: `omniroute`
+   - `ANTHROPIC_MODEL`: `antigravity-combo`
+   - Tự động tích hợp hook bảo vệ `hooks/security-guard.ps1`.
+
+2. **`.claude-mem/`**:
+   - `.env`: Cung cấp `ANTHROPIC_BASE_URL` và `ANTHROPIC_AUTH_TOKEN` cho tiến trình chạy ngầm worker của claude-mem.
+   - `settings.json`: Cấu hình worker chế độ `gateway` và provider `claude`.
+
+> **Cách áp dụng cho dự án mới:** Chỉ cần copy 2 thư mục `.claude` và `.claude-mem` vào thư mục gốc của bất kỳ dự án nào, mở Claude Code là tự động kết nối qua Omniroute mà không cần thiết lập lại biến môi trường thủ công.
 
 ---
 
@@ -56,7 +79,7 @@ claude-code-playbook/
 Chạy các lệnh sau để đưa toàn bộ kho tài liệu này lên tài khoản GitHub của bạn:
 
 ```bash
-cd "C:/Users/thanh-win10/Desktop/project-code/claude-code-playbook"
+cd "Đường dẫn của bạn"
 
 git add .
 git commit -m "feat: complete claude code developer playbook with skills, templates, hooks and cheatsheets"

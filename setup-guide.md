@@ -21,9 +21,9 @@ npm install -g @anthropic-ai/claude-code
 
 2. Sao chép file `templates/global-settings.json` vào `~/.claude/settings.json`.
 3. Trong từng dự án (Project level):
-   - Tạo thư mục `.claude/`
-   - Sao chép `templates/project-settings.json` vào `.claude/settings.json`.
-   - Điều chỉnh cấu hình `env` (nếu dùng endpoint cục bộ hoặc Omniroute / LiteLLM / Antigravity).
+   - Sao chép nguyên 2 thư mục `.claude/` và `.claude-mem/` từ repo này vào thư mục gốc dự án của bạn.
+   - Thư mục `.claude/settings.json` chứa quyền hạn và kết nối Omniroute gateway (`http://localhost:20128`).
+   - Thư mục `.claude-mem/` chứa file `.env` và `settings.json` giúp background worker tự kết nối Omniroute.
 
 ---
 
