@@ -74,6 +74,17 @@ Repo đã cấu hình sẵn 2 thư mục mẫu để kết nối qua Omniroute l
 
 ---
 
+## Lệnh khi Preview Markdown lỗi
+
+```env
+$p = "$env:APPDATA\Code"
+'Cache','CachedData','Code Cache','GPUCache','CachedExtensionVSIXs' | ForEach-Object {
+    Remove-Item "$p\$_" -Recurse -Force -ErrorAction SilentlyContinue
+}
+```
+
+---
+
 ## 🛠️ Đẩy Lên GitHub Lần Đầu
 
 Chạy các lệnh sau để đưa toàn bộ kho tài liệu này lên tài khoản GitHub của bạn:
