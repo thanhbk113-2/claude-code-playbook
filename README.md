@@ -16,6 +16,8 @@ claude-code-playbook/
 ├── .claude-mem/                  # Cấu hình bộ nhớ claude-mem qua Omniroute Gateway
 │   ├── .env                      # ANTHROPIC_BASE_URL & AUTH_TOKEN omniroute
 │   └── settings.json             # Cấu hình method gateway cho worker
+├── docs/                         # Hướng dẫn mở rộng & tích hợp hệ thống
+│   └── omniroute-antigravity-guide.md # Tích hợp Antigravity IDE & Omniroute xoay vòng tài khoản
 ├── cheatsheets/                  # Tóm tắt hướng dẫn & mẹo thực chiến từng bộ công cụ
 │   ├── superpowers.md            # Quy trình SE chuẩn: brainstorming, debugging, TDD, planning
 │   ├── ponytail.md               # Triết lý senior dev lười, tối giản code, audit, debt
@@ -71,6 +73,8 @@ Repo đã cấu hình sẵn 2 thư mục mẫu để kết nối qua Omniroute l
    - `settings.json`: Cấu hình worker chế độ `gateway` và provider `claude`.
 
 > **Cách áp dụng cho dự án mới:** Chỉ cần copy 2 thư mục `.claude` và `.claude-mem` vào thư mục gốc của bất kỳ dự án nào, mở Claude Code là tự động kết nối qua Omniroute mà không cần thiết lập lại biến môi trường thủ công.
+
+Chi tiết tích hợp với **Antigravity IDE** để dùng tính năng xoay vòng tài khoản (Round-Robin): xem [Tài liệu Antigravity & Omniroute](docs/omniroute-antigravity-guide.md).
 
 ---
 
