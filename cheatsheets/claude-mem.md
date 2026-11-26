@@ -2,6 +2,32 @@
 
 Triết lý: **Persistent Project Memory** — Lưu trữ ngữ cảnh dự án bền vững qua các phiên làm việc (sessions), cho phép tìm kiếm ngữ nghĩa (MCP Vector search) và quản lý work state độc lập.
 
+## Cài đặt
+
+Mở **Claude Desktop → tab Code** (hoặc Claude Code, Codex, RevidAPI Code), chọn thư mục dự án, dán **một câu** này là xong. AI tự tải về và gắn skill, không cần biết lệnh. Chạy bằng API RevidAPI như bình thường:
+
+```
+Cài giúp tôi Claude Mem (https://github.com/thedotmack/claude-mem) cho mọi dự án, kể cả tab Code của Claude Desktop. Ưu tiên cách tác giả khuyên trong README (plugin nếu có); không có thì tải repo về (không có git thì tải zip) và chép các thư mục có SKILL.md vào ~/.claude/skills. Xoá thư mục tạm sau khi xong. Liệt kê skill đã cài và giải thích ngắn bằng tiếng Việt cách tôi dùng.
+```
+
+Quen dùng Terminal thì chạy lệnh này trong thư mục dự án (máy cần Node.js):
+
+```
+npx skills add thedotmack/claude-mem
+```
+
+### Sau khi cài
+
+Mở **phiên mới** (Claude Desktop: mở tab Code mới) thì Claude Mem mới có hiệu lực. Cứ nói việc như bình thường, Claude tự dùng khi hợp.
+
+### Tắt hoặc gỡ ra
+
+Dán câu này vào cùng chỗ đã cài, AI tự gỡ sạch:
+
+```
+Gỡ Claude Mem (https://github.com/thedotmack/claude-mem) ra khỏi máy: nếu cài dạng plugin thì uninstall plugin, nếu chép vào ~/.claude/skills hoặc .claude/skills thì xoá đúng các thư mục skill của nó, gỡ cả MCP/hook nếu có. Không xoá thứ gì khác. Xong báo tôi đã gỡ những gì.
+```
+
 ## Cấu trúc lưu trữ
 - Nằm tại: `~/.claude-mem/`
 - Cơ sở dữ liệu: `claude-mem.db` (SQLite + Chroma vector database).

@@ -2,6 +2,32 @@
 
 Triết lý: **Lazy Senior Developer** — Code tốt nhất là code không bao giờ phải viết. Giải quyết triệt để vấn đề với lượng code mới ít nhất.
 
+## Cài đặt
+
+Mở **Claude Desktop → tab Code** (hoặc Claude Code, Codex, RevidAPI Code), chọn thư mục dự án, dán **một câu** này là xong. AI tự tải về và gắn skill, không cần biết lệnh. Chạy bằng API RevidAPI như bình thường:
+
+```
+Cài giúp tôi Ponytail (https://github.com/DietrichGebert/ponytail) cho mọi dự án, kể cả tab Code của Claude Desktop. Ưu tiên cách tác giả khuyên trong README (plugin nếu có); không có thì tải repo về (không có git thì tải zip) và chép các thư mục có SKILL.md vào ~/.claude/skills. Xoá thư mục tạm sau khi xong. Liệt kê skill đã cài và giải thích ngắn bằng tiếng Việt cách tôi dùng.
+```
+
+Quen dùng Terminal thì chạy lệnh này trong thư mục dự án (máy cần Node.js):
+
+```
+npx skills add DietrichGebert/ponytail
+```
+
+### Sau khi cài
+
+Mở **phiên mới** (Claude Desktop: mở tab Code mới) thì Ponytail mới có hiệu lực. Cứ nói việc như bình thường, Claude tự dùng khi hợp.
+
+### Tắt hoặc gỡ ra
+
+Dán câu này vào cùng chỗ đã cài, AI tự gỡ sạch:
+
+```
+Gỡ Ponytail (https://github.com/DietrichGebert/ponytail) ra khỏi máy: nếu cài dạng plugin thì uninstall plugin, nếu chép vào ~/.claude/skills hoặc .claude/skills thì xoá đúng các thư mục skill của nó, gỡ cả MCP/hook nếu có. Không xoá thứ gì khác. Xong báo tôi đã gỡ những gì.
+```
+
 ## Thứ tự ưu tiên giải pháp (Priority Order)
 1. **Có cần tồn tại không?** Bỏ tính năng thừa, tùy chọn không ai yêu cầu.
 2. **Codebase đã có chưa?** Tái sử dụng helper, service, component có sẵn trong dự án.
